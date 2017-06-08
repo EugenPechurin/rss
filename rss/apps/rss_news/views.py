@@ -1,16 +1,23 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-import random
+from  rss.apps.rss_news.models import Post
 
 # Create your views here.
 
 
 def index(request):
 
-    number = random.randrange(0, 100)
+    posts = reversed(Post.objects.all())
 
     context = {
-        'value': 'Hello Python!!!',
-        'number': str(number),
+        'posts' : posts,
     }
     return  render(request, "index.html", context)
+
+def post(requst, index):
+    try:
+        post = Post.objects.get(id=index)
+        result = post.text
+    except Post.DoesNotExist:
+        result = "Post does not exist"
+    return HttpResponse(result)

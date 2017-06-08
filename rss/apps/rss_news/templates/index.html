@@ -1,13 +1,63 @@
+{% load staticfiles %}
 {% load bootstrap3 %}
+{% load fontawesome %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        {% bootstrap_css %}
+    </head>
+    <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
+             <div class="navbar-header">
+                 <span>
+                     <a class="navbar-brand"><i class="fa fa-newspaper-o"></i>RSS NEWS</a>
+                 </span>
+             </div>
+             <div class="navbar-right">
+                 <div class="navbar-text"><button class="btn btn-default btn-xs">Registration</button></div>
 
-{# Display a form #}
+             </div>
+         </div>
+    </nav>
+        <div style="margin-top: 50px;">
+        </div>
 
-<form action="/url/to/submit/" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">
-            {% bootstrap_icon "star" %} Submit
-        </button>
-    {% endbuttons %}
-</form>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-0 col-md-3"></div>
+            <div class="col-xs-0 col-md-6">
+
+                    {% for post in posts %}
+                        <div class="post-block">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                            <p>published: {{ post.published_date }}</p>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                                </div>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1 text-right">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-default">read</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-">
+
+            </div>
+        </div>
+    </div>

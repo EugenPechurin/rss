@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rss.apps.rss_news',
     'bootstrap3',
+    'fontawesome'
 ]
 
 MIDDLEWARE = [
